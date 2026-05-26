@@ -1,55 +1,22 @@
-"use client";
+import GalleryClient from "./GalleryClient";
 
-import { useState } from "react";
+export const metadata = {
+  title: "Dental Clinic Gallery | Smile Transformations in Indore",
+  description:
+    "View before & after smile transformations and clinic images of Dental Planet, a leading dental clinic in Indore.",
+  keywords: [
+    "dental clinic gallery",
+    "dental clinic Indore photos",
+    "dentist clinic images",
+    "Dental Planet gallery",
+  ],
+  openGraph: {
+    title: "Dental Planet Gallery",
+    description: "Modern dental clinic images and infrastructure",
+    images: ["/images/gallary1.jpeg"],
+  },
+};
 
-export default function GalleryPage() {
-  const images = [
-    "/images/gallary1.jpeg",
-    "/images/gallary2.jpeg",
-    "/images/gallary3.jpeg",
-    "/images/gallary4.jpeg",
-    "/images/gallary5.jpeg",
-    "/images/gallary6.jpeg",
-    "/images/gallary7.jpeg",
-  ];
-
-  const [preview, setPreview] = useState<string | null>(null);
-
-  return (
-    <>
-      <main className="gallery-page">
-        <div className="container">
-          {/* HEADER */}
-          <div className="gallery-header text-center">
-            <span className="gallery-badge">Our Clinic</span>
-            <h1>Clinic Gallery</h1>
-            <p>
-              Explore our modern infrastructure, equipment & patient-friendly
-              spaces
-            </p>
-          </div>
-
-          {/* GRID */}
-          <div className="gallery-grid">
-            {images.map((src, i) => (
-              <div
-                key={i}
-                className={`gallery-item gallery-item-${i + 1}`}
-                onClick={() => setPreview(src)}
-              >
-                <img src={src} alt="Dental Clinic" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </main>
-
-      {/* PREVIEW */}
-      {preview && (
-        <div className="gallery-modal" onClick={() => setPreview(null)}>
-          <img src={preview} />
-        </div>
-      )}
-    </>
-  );
+export default function Page() {
+  return <GalleryClient />;
 }

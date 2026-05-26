@@ -30,6 +30,7 @@ export default function AppointmentPopup() {
               type="button"
               className="btn-close"
               onClick={() => setShow(false)}
+              suppressHydrationWarning
             />
           </div>
 

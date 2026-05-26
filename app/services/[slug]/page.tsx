@@ -1,6 +1,47 @@
 import { services } from "@/data/services";
 import Link from "next/link";
+import { Metadata } from "next";
 
+// ✅ Metadata (async + await params)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const service = services.find(
+    (s) =>
+      s.slug.toLowerCase() ===
+      decodeURIComponent(slug).toLowerCase()
+  );
+
+  if (!service) {
+    return {
+      title: "Service Not Found | Dental Planet",
+      description: "The requested service does not exist.",
+    };
+  }
+
+  return {
+    title: `${service.slug} | Best Dentist In Tilak Nagar,Indore`,
+    description: service.description,
+    openGraph: {
+      title: service.title,
+      description: service.description,
+      images: [service.image],
+    },
+  };
+}
+
+// ✅ Static params
+export async function generateStaticParams() {
+  return services.map((s) => ({
+    slug: s.slug,
+  }));
+}
+
+// ✅ Page (async + await params)
 export default async function ServiceDetail({
   params,
 }: {
@@ -8,7 +49,11 @@ export default async function ServiceDetail({
 }) {
   const { slug } = await params;
 
-  const service = services.find((s) => s.slug === slug);
+  const service = services.find(
+    (s) =>
+      s.slug.toLowerCase() ===
+      decodeURIComponent(slug).toLowerCase()
+  );
 
   if (!service) {
     return (
@@ -18,8 +63,9 @@ export default async function ServiceDetail({
     );
   }
 
-  // 🔥 UPDATED RELATED SERVICES LOGIC
-  const relatedServices = services.filter((s) => s.slug !== slug).slice(0, 4);
+  const relatedServices = services
+    .filter((s) => s.slug !== service.slug)
+    .slice(0, 4);
 
   return (
     <div className="container py-5">
@@ -33,12 +79,13 @@ export default async function ServiceDetail({
       </div>
 
       <div className="row g-5">
-        {/* LEFT CONTENT */}
         <div className="col-lg-8">
           <article className="bg-white rounded-4 shadow-sm p-4 p-md-5">
             <h1 className="mb-3">{service.title}</h1>
 
-            <p className="text-muted mb-4">{service.longDescription}</p>
+            <p className="text-muted mb-4">
+              {service.longDescription}
+            </p>
 
             <img
               src={service.image}
@@ -63,11 +110,12 @@ export default async function ServiceDetail({
           </article>
         </div>
 
-        {/* RIGHT SIDEBAR */}
-        <div className="col-lg-4 z-1">
+        <div className="col-lg-4">
           <div className="sticky-lg-top" style={{ top: "120px" }}>
             <aside className="bg-white rounded-4 shadow-sm p-4">
-              <h5 className="fw-semibold mb-4">Related Services</h5>
+              <h5 className="fw-semibold mb-4">
+                Related Services
+              </h5>
 
               <ul className="list-unstyled d-flex flex-column gap-4 mb-0">
                 {relatedServices.map((s) => (
@@ -88,10 +136,15 @@ export default async function ServiceDetail({
                       />
 
                       <div>
-                        <div className="fw-medium" style={{ color: "#2563eb" }}>
+                        <div
+                          className="fw-medium"
+                          style={{ color: "#2563eb" }}
+                        >
                           {s.title}
                         </div>
-                        <div className="small text-muted">View details →</div>
+                        <div className="small text-muted">
+                          View details →
+                        </div>
                       </div>
                     </Link>
                   </li>

@@ -84,7 +84,6 @@ export default function BookAppointment() {
                       value={form.name}
                       onChange={handleChange}
                       required
-                      suppressHydrationWarning
                     />
                   </div>
 
@@ -98,7 +97,6 @@ export default function BookAppointment() {
                       value={form.email}
                       onChange={handleChange}
                       required
-                      suppressHydrationWarning
                     />
                   </div>
 
@@ -112,7 +110,6 @@ export default function BookAppointment() {
                       value={form.phone}
                       onChange={handleChange}
                       required
-                      suppressHydrationWarning
                     />
                   </div>
 
@@ -125,7 +122,6 @@ export default function BookAppointment() {
                       value={form.date}
                       onChange={handleChange}
                       required
-                      suppressHydrationWarning
                     />
                   </div>
 
@@ -138,7 +134,6 @@ export default function BookAppointment() {
                       value={form.time}
                       onChange={handleChange}
                       required
-                      suppressHydrationWarning
                     />
                   </div>
 
@@ -153,7 +148,6 @@ export default function BookAppointment() {
                       placeholder="Describe your concern"
                       value={form.message}
                       onChange={handleChange}
-                      suppressHydrationWarning
                     />
                   </div>
 
@@ -162,7 +156,6 @@ export default function BookAppointment() {
                       type="submit"
                       className="btn btn-warning px-5 py-2 fw-semibold rounded-pill"
                       disabled={loading}
-                      suppressHydrationWarning
                     >
                       {loading ? (
                         <>

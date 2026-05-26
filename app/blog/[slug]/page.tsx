@@ -1,7 +1,43 @@
 import Link from "next/link";
+import { Metadata } from "next";
+import { faqSchemas } from "@/app/lib/faqSchemas";
+import Script from "next/script";
 
-const API = process.env.NEXT_PUBLIC_BLOG_API!;
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
+// ✅ Dynamic SEO
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const res = await fetch(
+    `${API}/api/blogs/get-blog-by-slug/${slug}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) {
+    return {
+      title: "Blog Not Found | Dental Planet",
+    };
+  }
+
+  const { blog } = await res.json();
+
+  return {
+    title: `${blog.title} | Dental Planet`,
+    description: blog.excerpt,
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      images: [`${API}/api/blogs/get-blog-photo/${blog._id}`],
+    },
+  };
+}
+
+// ✅ Page
 export default async function BlogDetail({
   params,
 }: {
@@ -9,27 +45,27 @@ export default async function BlogDetail({
 }) {
   const { slug: rawSlug } = await params;
   const slug = rawSlug.toLowerCase();
+  const faqSchema = faqSchemas[slug];
 
-  console.log("Fetching blog with slug:", slug);
-
-  const blogRes = await fetch(`${API}/api/blogs/get-blog-by-slug/${slug}`, {
-    cache: "no-store",
-  });
+  const blogRes = await fetch(
+    `${API}/api/blogs/get-blog-by-slug/${slug}`,
+    { cache: "no-store" }
+  );
 
   if (!blogRes.ok) {
     return (
       <div className="container py-5 text-center">
         <h2>Blog not found</h2>
-        <p className="text-muted">Slug: {slug}</p>
       </div>
     );
   }
 
   const { blog } = await blogRes.json();
 
-  const allRes = await fetch(`${API}/api/blogs/get-all-blogs`, {
-    cache: "no-store",
-  });
+  const allRes = await fetch(
+    `${API}/api/blogs/get-all-blogs`,
+    { cache: "no-store" }
+  );
 
   const allData = await allRes.json();
 
@@ -38,103 +74,58 @@ export default async function BlogDetail({
     .slice(0, 5);
 
   return (
-    <div className="container py-5">
+    <>
+    {faqSchema && (
+  <Script
+    id="faq-schema"
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqSchema),
+    }}
+  />
+)}
+<div className="container py-5">
       <div className="mb-4">
-        <Link
-          href="/blog"
-          className="btn btn-sm fs-6 px-5 py-3 rounded-pill shadow-lg btn-outline-info fw-semibold"
-        >
+        <Link href="/blog" className="btn btn-outline-info">
           ← Back to Blogs
         </Link>
       </div>
 
       <div className="row g-5">
         <div className="col-lg-8">
-          <article className="bg-white rounded-4 shadow-sm p-4 p-md-5">
-            <h1 className="mb-3">{blog.title}</h1>
+          <article>
+            <h1>{blog.title}</h1>
 
-            <p className="text-muted mb-4">
-              Posted on{" "}
-              {new Date(blog.createdAt).toLocaleDateString("en-IN", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              })}{" "}
-              • {blog.author}
+            <p className="text-muted">
+              {new Date(blog.createdAt).toLocaleDateString("en-IN")} •{" "}
+              {blog.author}
             </p>
 
-            <div className="d-flex justify-content-center mb-4">
-              <img
-                src={`${API}/api/blogs/get-blog-photo/${blog._id}`}
-                alt={blog.title}
-                style={{
-                  maxWidth: "100%",
-                  width: "520px",
-                  height: "auto",
-                  borderRadius: "16px",
-                  boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
-                }}
-              />
-            </div>
+            <img
+              src={`${API}/api/blogs/get-blog-photo/${blog._id}`}
+              alt={blog.title}
+              style={{ width: "100%", borderRadius: "12px" }}
+            />
 
-            <div style={{ whiteSpace: "pre-line", lineHeight: 1.8 }}>
+            <div style={{ whiteSpace: "pre-line", marginTop: "20px" }}>
               {blog.content}
             </div>
           </article>
         </div>
 
-        <div className="col-12 col-lg-4 z-1">
-          <div className="sticky-lg-top" style={{ top: "120px" }}>
-            <aside className="bg-white rounded-4 shadow-sm p-4">
-              <h5 className="fw-semibold mb-3">Recent Posts</h5>
+        <div className="col-lg-4">
+          <aside>
+            <h5>Recent Posts</h5>
 
-              <ul className="list-unstyled d-flex flex-column gap-4 mb-0">
-                {recentBlogs.map((b: any) => (
-                  <li key={b._id}>
-                    <Link
-                      href={`/blog/${b.slug}`}
-                      className="d-flex gap-3 text-decoration-none align-items-start"
-                    >
-                      <img
-                        src={`${API}/api/blogs/get-blog-photo/${b._id}`}
-                        alt={b.title}
-                        style={{
-                          width: "64px",
-                          height: "64px",
-                          objectFit: "cover",
-                          borderRadius: "12px",
-                          flexShrink: 0,
-                        }}
-                      />
-
-                      <div>
-                        <div
-                          className="fw-medium"
-                          style={{
-                            color: "#2563eb",
-                            lineHeight: 1.4,
-                          }}
-                        >
-                          {b.title}
-                        </div>
-
-                        <div className="small text-muted">
-                          Posted on{" "}
-                          {new Date(b.createdAt).toLocaleDateString("en-IN", {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                          })}
-                        </div>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          </div>
+            {recentBlogs.map((b: any) => (
+              <Link key={b._id} href={`/blog/${b.slug}`}>
+                <p>{b.title}</p>
+              </Link>
+            ))}
+          </aside>
         </div>
       </div>
     </div>
+    </>
   );
 }

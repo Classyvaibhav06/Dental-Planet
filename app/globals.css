@@ -1,7 +1,7 @@
 /* =========================
    ROOT VARIABLES (GOLD THEME)
 ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
   --gold: #c9a24d;
@@ -16,10 +16,12 @@
 body {
   background: var(--ivory);
   color: var(--black);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   letter-spacing: -0.4px;
 }
 
@@ -38,16 +40,20 @@ h1, h2, h3 {
    NAVBAR BASE
 ========================= */
 .navbar-glass {
-  background: rgba(255, 253, 248, 0.92);
+  background: rgba(255, 253, 248, 0.96);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(201, 162, 77, 0.25);
-  padding: 6px 0; 
+  padding: 18px 0;
   z-index: 999;
 }
 
 .navbar .container {
   max-width: 1320px;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
 }
 
 /* =========================
@@ -57,18 +63,20 @@ h1, h2, h3 {
 .navbar-brand {
   display: flex;
   align-items: center;
+  
 }
 
 .navbar-brand img {
-  max-height: 8rem;
+  position: absolute;
+  max-height: 130px;
   width: auto;
+  transition: max-height 0.3s ease;
 }
 
 /* Premium gold clarity */
 .logo-gold {
-  filter:
-    drop-shadow(0 1px 1px rgba(255,255,255,0.4))
-    drop-shadow(0 4px 10px rgba(201,162,77,0.45));
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.4))
+    drop-shadow(0 4px 10px rgba(201, 162, 77, 0.45));
 }
 
 /* =========================
@@ -76,13 +84,13 @@ h1, h2, h3 {
 ========================= */
 @media (max-width: 991px) {
   .navbar-brand img {
-    max-height: 80px;
+    max-height: 96px;
   }
 }
 
 @media (max-width: 575px) {
   .navbar-brand img {
-    max-height: 68px;
+    max-height: 56px;
   }
 }
 /* =========================
@@ -90,12 +98,12 @@ h1, h2, h3 {
 ========================= */
 .nav-link-modern {
   position: relative;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 600!important;
+  letter-spacing: 0.6px;
   color: var(--text-dark) !important;
   text-transform: uppercase;
-  padding: 10px 0;
+  padding: 14px 0;
   transition: color 0.3s ease;
 }
 
@@ -106,11 +114,7 @@ h1, h2, h3 {
   bottom: -6px;
   width: 0%;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--gold),
-    var(--gold-light)
-  );
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
   transition: width 0.35s ease;
 }
 
@@ -126,7 +130,7 @@ h1, h2, h3 {
    TOGGLER (MOBILE ICON)
 ========================= */
 .navbar-toggler-icon-custom {
-  font-size: 22px;
+  font-size: 24px;
   color: var(--gold-dark);
 }
 
@@ -134,7 +138,9 @@ h1, h2, h3 {
    DESKTOP SOCIAL ICONS
 ========================= */
 .navbar .nav-item a.rounded-circle {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .navbar .nav-item a.rounded-circle:hover {
@@ -146,8 +152,15 @@ h1, h2, h3 {
    MOBILE NAV PANEL
 ========================= */
 .navbar-mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
   background: var(--ivory);
+  border-bottom: 1px solid rgba(201, 162, 77, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   animation: slideDown 0.35s ease;
+  z-index: 998;
 }
 
 @keyframes slideDown {
@@ -170,31 +183,12 @@ h1, h2, h3 {
    MOBILE CTA (BOOK APPOINTMENT)
 ========================= */
 .navbar-mobile .nav-item:last-child .nav-link-modern {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark)
-  );
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: white !important;
   border-radius: 30px;
   padding: 12px 26px;
   display: inline-block;
   margin-top: 10px;
-}
-
-/* =========================
-   RESPONSIVE ADJUSTMENTS
-========================= */
-@media (max-width: 991px) {
-  .navbar-brand img {
-    max-height: 75px;
-  }
-}
-
-@media (max-width: 575px) {
-  .navbar-brand img {
-    max-height: 65px;
-  }
 }
 
 .hero-section {
@@ -207,9 +201,9 @@ h1, h2, h3 {
 /* KEY FIX */
 .hero-image {
   width: 100%;
-  height: auto;          /* 👈 IMPORTANT */
+  height: auto; /* 👈 IMPORTANT */
   max-height: 85vh;
-  object-fit: contain;   /* 👈 NO CROPPING */
+  object-fit: contain; /* 👈 NO CROPPING */
   display: block;
   margin: 0 auto;
 }
@@ -221,9 +215,9 @@ h1, h2, h3 {
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.55),
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0)
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0)
   );
   pointer-events: none;
 }
@@ -246,15 +240,11 @@ h1, h2, h3 {
 }
 
 .about-section .shadow-sm {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.05) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05) !important;
 }
 
 .doctor-section {
-  background: linear-gradient(
-    to bottom,
-    #ffffff,
-    #fffaf0
-  );
+  background: linear-gradient(to bottom, #ffffff, #fffaf0);
 }
 
 .btn-gold {
@@ -269,10 +259,10 @@ h1, h2, h3 {
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(201,162,77,0.35);
+  box-shadow: 0 10px 30px rgba(201, 162, 77, 0.35);
 }
 
-text-gold{
+text-gold {
   color: var(--gold);
 }
 
@@ -288,10 +278,9 @@ text-gold{
     padding: 0 16px;
   }
 
-  /* LOGO – bigger & clearer */
+  /* LOGO – elegant & clear */
   .navbar-brand img {
-    max-height: 100px;     /* ⬅️ visible but not oversized */
-    width: 160px;
+    max-height: 72px;
   }
 
   /* Hamburger alignment */
@@ -310,7 +299,7 @@ text-gold{
 =============================== */
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;          /* ⬅️ IMPORTANT */
+    height: auto; /* ⬅️ IMPORTANT */
     min-height: unset;
   }
 
@@ -318,16 +307,16 @@ text-gold{
     max-height: none;
     width: 100%;
     height: auto;
-    object-fit: contain;   /* no crop */
+    object-fit: contain; /* no crop */
   }
 
   /* Reduce overlay intensity on mobile */
   .hero-section::after {
     background: linear-gradient(
       to bottom,
-      rgba(0,0,0,0.25),
-      rgba(0,0,0,0.1),
-      rgba(0,0,0,0)
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0)
     );
   }
 }
@@ -367,28 +356,19 @@ text-gold{
 =============================== */
 section.py-2 {
   padding: 4rem 0;
-  background: linear-gradient(
-    to bottom,
-    #fffdf8,
-    #fff8e8
-  );
+  background: linear-gradient(to bottom, #fffdf8, #fff8e8);
 }
 
 /* ===============================
    DOCTOR IMAGE FRAME
 =============================== */
 
-
 /* Gold accent line */
 section.py-2 .rounded-4::after {
   content: "";
   display: block;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--gold),
-    var(--gold-light)
-  );
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
   margin-top: 10px;
   border-radius: 2px;
 }
@@ -431,23 +411,15 @@ section.py-2 p.fs-6 {
    CTA BOX
 =============================== */
 section.py-2 .bg-light {
-  background: linear-gradient(
-    135deg,
-    #fffaf0,
-    #f6e6c2
-  ) !important;
-  border: 1px solid rgba(201,162,77,0.35) !important;
+  background: linear-gradient(135deg, #fffaf0, #f6e6c2) !important;
+  border: 1px solid rgba(201, 162, 77, 0.35) !important;
 }
 
 /* ===============================
    BADGE (CHILD SPECIALIST)
 =============================== */
 .badge.bg-warning {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark)
-  ) !important;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
   color: #fff !important;
   font-weight: 600;
   letter-spacing: 0.4px;
@@ -458,11 +430,7 @@ section.py-2 .bg-light {
 =============================== */
 .btn-outline-info {
   border: none;
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark)
-  );
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: white !important;
   font-weight: 600;
   transition: all 0.35s ease;
@@ -470,7 +438,7 @@ section.py-2 .bg-light {
 
 .btn-outline-info:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(201,162,77,0.45);
+  box-shadow: 0 10px 30px rgba(201, 162, 77, 0.45);
 }
 
 /* ===============================
@@ -495,11 +463,7 @@ section.py-2 .bg-light {
 =============================== */
 
 .about-badge {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark)
-  );
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: white;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -518,11 +482,7 @@ section.py-2 .bg-light {
 
 /* CTA button */
 .about-btn {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark)
-  );
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: white;
   border: none;
   transition: all 0.35s ease;
@@ -530,7 +490,7 @@ section.py-2 .bg-light {
 
 .about-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(201,162,77,0.45);
+  box-shadow: 0 12px 30px rgba(201, 162, 77, 0.45);
 }
 
 /* ===============================
@@ -538,15 +498,12 @@ section.py-2 .bg-light {
 =============================== */
 .about-image-wrapper {
   position: relative;
-  padding: 16px;
+  padding: 5px;
   border-radius: 20px;
-  background: linear-gradient(
-    135deg,
-    #ffffff,
-    #fff4dc
-  );
-  border: 1px solid rgba(201,162,77,0.35);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ffd700, #c9a227, #ffd700);
+
+  border: 1px solid rgba(201, 162, 77, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
 }
 
 .about-image-wrapper img {
@@ -561,18 +518,14 @@ section.bg-white h2 {
 }
 
 section.bg-white .bg-light {
-  background: linear-gradient(
-    135deg,
-    #fffdf8,
-    #fdf1d5
-  ) !important;
-  border: 1px solid rgba(201,162,77,0.3) !important;
+  background: linear-gradient(135deg, #fffdf8, #fdf1d5) !important;
+  border: 1px solid rgba(201, 162, 77, 0.3) !important;
   transition: all 0.35s ease;
 }
 
 section.bg-white .bg-light:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* ===============================
@@ -586,11 +539,7 @@ section.bg-white span.fs-1 {
    WHY CHOOSE US
 =============================== */
 section.bg-light {
-  background: linear-gradient(
-    to bottom,
-    #fffdf8,
-    #f7ecd1
-  );
+  background: linear-gradient(to bottom, #fffdf8, #f7ecd1);
 }
 
 section.bg-light h2 {
@@ -598,7 +547,7 @@ section.bg-light h2 {
 }
 
 section.bg-light .border-primary-subtle {
-  border-color: rgba(201,162,77,0.4) !important;
+  border-color: rgba(201, 162, 77, 0.4) !important;
 }
 
 section.bg-light .bg-white {
@@ -607,7 +556,7 @@ section.bg-light .bg-white {
 
 section.bg-light .bg-white:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
 }
 
 /* ===============================
@@ -631,20 +580,12 @@ section.bg-light .bg-white:hover {
    SERVICES PAGE HEADER
 =============================== */
 .dental-services-section {
-  background: linear-gradient(
-    135deg,
-    #fffdf8,
-    #fff3dc
-  );
+  background: linear-gradient(135deg, #fffdf8, #fff3dc);
   border-bottom: 1px solid rgba(201, 162, 77, 0.25);
 }
 
 .dental-badge {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark)
-  );
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: #fff;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -666,11 +607,7 @@ section.bg-light .bg-white:hover {
    SERVICES GRID CONTAINER
 =============================== */
 .container.py-5 {
-  background: linear-gradient(
-    to bottom,
-    #fffdf8,
-    #ffffff
-  );
+  background: linear-gradient(to bottom, #fffdf8, #ffffff);
 }
 
 /* ===============================
@@ -774,13 +711,15 @@ section.bg-light .bg-white:hover {
   overflow: hidden;
   cursor: pointer;
   background: #fff;
-  box-shadow: 0 12px 30px rgba(0,0,0,.08);
-  transition: transform .35s ease, box-shadow .35s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .gallery-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 22px 45px rgba(0,0,0,.15);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-item img {
@@ -793,7 +732,7 @@ section.bg-light .bg-white:hover {
 .gallery-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.85);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1020,4 +959,56 @@ section.bg-light .bg-white:hover {
   .footer-custom .quick-links li {
     list-style: none;
   }
+}
+
+/* =================================
+   EXPERT PREMIUM PAGINATION STYLES
+================================= */
+.pagination-btn,
+.pagination-number {
+  border: 1px solid rgba(201, 162, 77, 0.25);
+  background: rgba(255, 253, 248, 0.6);
+  color: var(--black);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.pagination-number {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-number:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #fff !important;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 162, 77, 0.3);
+}
+
+.pagination-number.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #fff !important;
+  border-color: var(--gold-dark);
+  box-shadow: 0 8px 24px rgba(201, 162, 77, 0.4);
+}
+
+.pagination-btn:disabled,
+.pagination-number:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }

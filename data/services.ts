@@ -14,21 +14,21 @@ export const services = [
     ],
     image: "/images/img1.jpg",
   },
-{
-  title: "Kids Dental Treatment",
-  slug: "kids-dental-treatment",
-  description: "Comprehensive and gentle dental care for children.",
-  longDescription:
-    "Kids dental treatment focuses on maintaining and improving oral health in infants, children, and adolescents. "
-    + "It includes preventive care, early diagnosis, and child-friendly treatments designed to ensure healthy teeth development and positive dental experiences.",
-  features: [
-    "Child-friendly dental check-ups",
-    "Cavity prevention & fillings",
-    "Fluoride treatment & sealants",
-    "Early orthodontic assessment",
-  ],
-  image: "/images/kids-dental-care.png",
-},
+  {
+    title: "Kids Dental Treatment",
+    slug: "Kids-Dentist-in-Indore-Child-Dental-Specialist-Dental-Planet",
+    description: "Comprehensive and gentle dental care for children.",
+    longDescription:
+      "Kids dental treatment focuses on maintaining and improving oral health in infants, children, and adolescents. "
+      + "It includes preventive care, early diagnosis, and child-friendly treatments designed to ensure healthy teeth development and positive dental experiences.",
+    features: [
+      "Child-friendly dental check-ups",
+      "Cavity prevention & fillings",
+      "Fluoride treatment & sealants",
+      "Early orthodontic assessment",
+    ],
+    image: "/images/kids-dental-care.png",
+  },
 
   {
     title: "Dental & Oral X-Ray",
@@ -64,7 +64,7 @@ export const services = [
 
   {
     title: "Laser Dentistry",
-    slug: "laser-dentistry",
+    slug: "Laser-Dentistry-in-Indore-Advanced-Treatment-Dental-Planet",
     description: "Modern dental treatments using laser technology.",
     longDescription:
       "Laser dentistry provides minimally invasive dental treatments with faster healing, reduced pain, and improved precision. "
@@ -81,7 +81,7 @@ export const services = [
 
   {
     title: "Braces & Aligners",
-    slug: "braces-aligners",
+    slug: "Braces-And-Aligners-in-Indore-Dental-Planet-Tilak-Nagar",
     description: "Straighten your teeth with modern orthodontic solutions.",
     longDescription:
       "Braces and aligners correct misaligned teeth and bite problems. "
@@ -97,7 +97,7 @@ export const services = [
 
   {
     title: "Root Canal Treatment (RCT)",
-    slug: "root-canal-treatment",
+    slug: "Painless-Root-Canal-Treatment-in-Indore-Dental-Planet",
     description: "Save infected teeth with root canal treatment.",
     longDescription:
       "Root canal treatment removes infected pulp tissue from inside the tooth, relieves pain, and restores function. "
@@ -146,7 +146,7 @@ export const services = [
 
   {
     title: "Dental Implants",
-    slug: "dental-implants",
+    slug: "Dental-Implants-in-Indore-Cost-And-Procedure-Dental-Planet",
     description: "Permanent solution for missing teeth.",
     longDescription:
       "Dental implants replace missing teeth using a titanium post placed in the jawbone. "
@@ -191,8 +191,8 @@ export const services = [
   },
 
   {
-    title: "Dental Bleaching",
-    slug: "dental-bleaching",
+    title: "Teeth Bleaching",
+    slug: "Teeth-Whitening-in-Indore-Professional-Bleaching-Dental-Planet",
     description: "Professional teeth whitening procedure.",
     longDescription:
       "Dental bleaching is a cosmetic procedure designed to remove deep stains and discoloration from teeth. "
